@@ -1,13 +1,20 @@
 package com.vaibhav.minesweeper;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import android.media.MediaPlayer;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.vaibhav.minesweeper.Handler.dataBaseHandler;
+import com.vaibhav.minesweeper.Model.highScore;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Random;
 
 public class PlayNow2 extends AppCompatActivity{
@@ -23,8 +30,11 @@ public class PlayNow2 extends AppCompatActivity{
     MediaPlayer fireworks;
     MediaPlayer ringer;
     MediaPlayer timerGone;
+    SimpleDateFormat fmt = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
     int opened = 0;
     CountDownTimer t;
+    long tim;
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public void cell(View view) {
         ImageView img = (ImageView) view;
         int n = Integer.parseInt(img.getTag().toString());//start tag by 0
@@ -36,6 +46,7 @@ public class PlayNow2 extends AppCompatActivity{
                 final TextView timer = findViewById(R.id.timer);
                 t = new CountDownTimer(120000, 1000) {
                     public void onTick(long millisUntilFinished) {
+                        tim = millisUntilFinished/1000;
                         ringer.start();
                         ringer.setLooping(true);
                         timer.setText(millisUntilFinished / 1000 + "s");
@@ -94,6 +105,10 @@ public class PlayNow2 extends AppCompatActivity{
                     status.setText("Win beyond time limit.");
                 } else {
                     status.setText("Win");
+                    dataBaseHandler db = new dataBaseHandler(PlayNow2.this);
+                    Date d = new Date(System.currentTimeMillis());
+                    highScore hs = new highScore(Long.toString(tim * 1), fmt.format(d));
+                    db.addHighScore(hs);
                 }
                 fireworks = MediaPlayer.create(PlayNow2.this, R.raw.fireworks);
                 ringer.stop();
@@ -350,6 +365,7 @@ public class PlayNow2 extends AppCompatActivity{
         t.cancel();
         t = new CountDownTimer(120000, 1000) {
             public void onTick(long millisUntilFinished) {
+                tim = millisUntilFinished/1000;
                 timer.setText(millisUntilFinished / 1000 + "s");
             }
 
