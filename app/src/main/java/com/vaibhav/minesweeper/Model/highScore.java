@@ -1,30 +1,30 @@
 package com.vaibhav.minesweeper.Model;
 
 public class highScore {
-    private String time;
+    private long score;
     private String date;
     private int id;
 
-    public highScore(String time, String date, int id) {
-        this.time = time;
+    public highScore(long score, String date, int id) {
+        this.score = score;
         this.date = date;
         this.id = id;
     }
 
-    public highScore(String time, String date) {
-        this.time = time;
+    public highScore(long score, String date) {
+        this.score = score;
         this.date = date;
     }
 
     public highScore() {
     }
 
-    public String getTime() {
-        return time;
+    public long getScore() {
+        return score;
     }
 
-    public void setTime(String time) {
-        this.time = time;
+    public void setScore(long score) {
+        this.score = score;
     }
 
     public String getDate() {

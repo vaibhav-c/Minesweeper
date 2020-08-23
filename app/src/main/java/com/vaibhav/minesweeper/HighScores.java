@@ -2,7 +2,6 @@ package com.vaibhav.minesweeper;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -32,8 +31,8 @@ public class HighScores extends AppCompatActivity {
         dataBaseHandler db = new dataBaseHandler(HighScores.this);
         List<highScore> hsList = db.showHighScore();
         for(highScore hs : hsList) {
-            Log.d("Msg", "Data: ID:" + hs.getId() + " Date:" + hs.getDate() + " Score:" + hs.getTime());
-            highscore.add(m + "        " + hs.getDate() + "                " + hs.getTime());
+            Log.d("Msg", "Data: ID:" + hs.getId() + " Date:" + hs.getDate() + " Score:" + hs.getScore());
+            highscore.add(m + "        " + hs.getDate() + "                " + hs.getScore());
             m++;
         }
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, highscore);

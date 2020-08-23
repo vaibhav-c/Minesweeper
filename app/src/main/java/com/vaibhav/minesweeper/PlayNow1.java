@@ -107,7 +107,7 @@ public class PlayNow1 extends AppCompatActivity{
                     status.setText("Win");
                     dataBaseHandler db = new dataBaseHandler(PlayNow1.this);
                     Date d = new Date(System.currentTimeMillis());
-                    highScore hs = new highScore(Double.toString(tim * 1.5), fmt.format(d));
+                    highScore hs = new highScore((long)(tim * 1.5), fmt.format(d));
                     db.addHighScore(hs);
                 }
                 fireworks = MediaPlayer.create(PlayNow1.this, R.raw.fireworks);

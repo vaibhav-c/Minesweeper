@@ -20,8 +20,8 @@ public class dataBaseHandler extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String query = "CREATE TABLE " + params.TABLE_NAME + "("
-                + params.KEY_ID + " INTEGER PRIMARY KEY, " + params.KEY_TIME +
-                " TEXT,"  + params.KEY_DATE + " TEXT)";
+                + params.KEY_ID + " INTEGER PRIMARY KEY, " + params.KEY_SCORE +
+                " INTEGER,"  + params.KEY_DATE + " TEXT)";
         Log.d("Msg", "Query run is" + query);
         db.execSQL(query);
     }
@@ -32,7 +32,7 @@ public class dataBaseHandler extends SQLiteOpenHelper {
     public void addHighScore(highScore hs) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues value = new ContentValues();
-        value.put(params.KEY_TIME, hs.getTime());
+        value.put(params.KEY_SCORE, hs.getScore());
         value.put(params.KEY_DATE, hs.getDate());
         db.insert(params.TABLE_NAME, null, value);
         Log.d("Msg", "Inserted");
@@ -41,14 +41,15 @@ public class dataBaseHandler extends SQLiteOpenHelper {
     public List<highScore> showHighScore() {
         SQLiteDatabase db = this.getReadableDatabase();
         List<highScore> list = new ArrayList<>();
-        String query = "SELECT * FROM " + params.TABLE_NAME + " ORDER BY " + params.KEY_TIME + " DESC";
+        String query = "SELECT * FROM " + params.TABLE_NAME + " ORDER BY " + params.KEY_SCORE + " DESC ";
         Cursor cursor = db.rawQuery(query, null);
+        Log.d("Msg", query);
         Log.d("Msg", "added to list");
         if(cursor.moveToFirst()) {
             do{
                 highScore c = new highScore();
                 c.setId(Integer.parseInt(cursor.getString(0)));
-                c.setTime(cursor.getString(1));
+                c.setScore(cursor.getLong(1));
                 c.setDate(cursor.getString(2));
                 Log.d("Msg", "added to list");
                 list.add(c);
