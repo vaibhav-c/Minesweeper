@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.vaibhav.minesweeper">
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -11,23 +9,31 @@
         android:roundIcon="@mipmap/minesweeper"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".HighScores"></activity>
         <activity
             android:name=".chooseLevel"
-            android:parentActivityName=".MainActivity"></activity>
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".PlayNow2"
-            android:parentActivityName=".chooseLevel" />
+            android:parentActivityName=".chooseLevel"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".PlayNow1"
-            android:parentActivityName=".chooseLevel" />
+            android:parentActivityName=".chooseLevel"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".HowToPlay"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".PlayNow"
-            android:parentActivityName=".chooseLevel" />
-        <activity android:name=".MainActivity">
+            android:parentActivityName=".chooseLevel"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".HighScores"
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".MainActivity" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
