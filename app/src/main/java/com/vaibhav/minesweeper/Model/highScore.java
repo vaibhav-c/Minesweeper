@@ -4,7 +4,6 @@ public class highScore {
     private long score;
     private String date;
     private int id;
-
     public highScore(long score, String date, int id) {
         this.score = score;
         this.date = date;
@@ -42,4 +41,5 @@ public class highScore {
     public void setId(int id) {
         this.id = id;
     }
+
 }

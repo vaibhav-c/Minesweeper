@@ -4,42 +4,78 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/minesweeper"
-        android:label="@string/app_name"
-        android:roundIcon="@mipmap/minesweeper"
+        android:icon="@mipmap/logo"
+        android:label="Indian Mines League"
+        android:roundIcon="@mipmap/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".settings"
+            android:screenOrientation="portrait"
+            ></activity>
+        <activity
+            android:name=".minesweeperOrEight"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".MainActivity1" />
+        <activity
+            android:name=".levelOrCustom"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MainActivity1"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".LevelPlayChoose"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".chooseTheme"
+            android:parentActivityName=".MainActivity1"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".chooseLevel"
-            android:parentActivityName=".MainActivity"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".LevelPlayChooseEight"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PlayNowCustom"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PlayNowCustom1"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PlayNowCustom2"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".PlayNow2"
-            android:parentActivityName=".chooseLevel"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".PlayNow1"
-            android:parentActivityName=".chooseLevel"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".HowToPlay"
             android:parentActivityName=".MainActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".PlayNow"
-            android:parentActivityName=".chooseLevel"
-            android:screenOrientation="portrait"/>
+            android:parentActivityName=".LevelPlayChoose"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".HighScores"
             android:parentActivityName=".MainActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".MainActivity" android:screenOrientation="portrait">
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

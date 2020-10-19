@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    android:background="@drawable/paper">
+
+    <TextView
+        android:id="@+id/difference5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="15dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="It discloses adjacent cells in all directions no matter they contain zero or number greater than zero but cells containing mines will not be displayed."
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:fontFamily="@font/aclonica"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/difference4" />
+
+    <TextView
+        android:id="@+id/difference4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="RevNex is different."
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:fontFamily="@font/aclonica"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/difference3" />
+
+    <TextView
+        android:id="@+id/difference3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="Minesweeper discloses the numbered cells one by one but cells containing zero disclose themselves in all directions until they reach a cell which contains a number greater than zero."
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:fontFamily="@font/aclonica"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/difference2" />
+
+    <TextView
+        android:id="@+id/difference2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="The rules and regulations similar to the original minesweeper where you need to disclose the cells not containing bombs."
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:fontFamily="@font/aclonica"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/difference" />
+
+    <TextView
+        android:id="@+id/difference"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="Minesweeper is a classic."
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:fontFamily="@font/aclonica"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

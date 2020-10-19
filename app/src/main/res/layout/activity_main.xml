@@ -2,88 +2,96 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layoutScreen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F6F5EC"
+    android:alpha="1"
     android:onClick="doNothing"
     tools:context=".MainActivity">
+
+    <RelativeLayout
+        android:id="@+id/back"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.85"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </RelativeLayout>
 
     <ImageView
         android:id="@+id/background"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:fitsSystemWindows="true"
         android:onClick="doNothing"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/bomb" />
 
-    <TextView
-        android:id="@+id/textView"
-        style="@style/Widget.AppCompat.TextView"
+    <ImageView
+        android:id="@+id/playButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="doNothing"
-        android:text="Minesweeper"
-        android:textSize="30sp"
-        android:textStyle="bold"
+        android:layout_marginTop="25dp"
+        android:alpha="1"
+        android:onClick="play"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/playButton"
+    <TextView
+        android:id="@+id/txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="120dp"
-        android:onClick="play"
-        android:text="Play"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:fontFamily="@font/aclonica"
+        app:layout_constraintBottom_toBottomOf="@+id/playButton"
+        app:layout_constraintEnd_toEndOf="@+id/playButton"
+        app:layout_constraintStart_toStartOf="@+id/playButton"
+        app:layout_constraintTop_toTopOf="@+id/playButton" />
 
-    <Button
-        android:id="@+id/howToPlay"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:onClick="howToPlay"
-        android:text="How to Play?"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/playButton" />
-
-    <Button
+    <ImageView
         android:id="@+id/exitButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:alpha="1"
         android:onClick="exit"
-        android:text="Exit"
-        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/highScore"
-        app:layout_constraintVertical_bias="0.012" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    <Button
-        android:id="@+id/highScore"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+    <ImageView
+        android:id="@+id/settingsButton"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:alpha="1"
+        android:onClick="howToPlay"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/highScoreButton"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:alpha="1"
         android:onClick="highScores"
-        android:text="High Scores"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/howToPlay" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/themesButton"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:alpha="1"
+        android:onClick="theme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

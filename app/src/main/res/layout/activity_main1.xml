@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layoutScreen"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:alpha="1"
+    android:background="#4D2600"
+    android:onClick="doNothing"
+    tools:context=".MainActivity">
+
+
+    <ImageView
+        android:id="@+id/background"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fitsSystemWindows="true"
+        android:onClick="doNothing"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/exploded" />
+
+    <ImageView
+        android:id="@+id/playButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:alpha="1"
+        android:onClick="play"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/play" />
+
+    <TextView
+        android:id="@+id/txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PLAY"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:fontFamily="@font/aclonica"
+        app:layout_constraintBottom_toBottomOf="@+id/playButton"
+        app:layout_constraintEnd_toEndOf="@+id/playButton"
+        app:layout_constraintStart_toStartOf="@+id/playButton"
+        app:layout_constraintTop_toTopOf="@+id/playButton" />
+
+    <ImageView
+        android:id="@+id/exitButton"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:alpha="1"
+        android:onClick="exit"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageView
+        android:id="@+id/settingsButton"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:alpha="1"
+        android:onClick="howToPlay"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/highScoreButton"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:alpha="1"
+        android:onClick="highScores"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/themesButton"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:alpha="1"
+        android:onClick="theme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

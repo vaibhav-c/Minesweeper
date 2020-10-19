@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    android:background="@drawable/paper">
+
+    <TextView
+        android:id="@+id/difference14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="15dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="The more time you give yourself the time factor will decrease."
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:fontFamily="@font/aclonica"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/difference13" />
+
+    <TextView
+        android:id="@+id/difference13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="Bomb Factor increases with the bombs you set for yourself."
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:fontFamily="@font/aclonica"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/difference12" />
+
+    <TextView
+        android:id="@+id/difference12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="Difficulty Level is 1 for 8 x 8, 2 for 9 x 9 and 4 for 10 x 10."
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:fontFamily="@font/aclonica"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/difference11" />
+
+    <TextView
+        android:id="@+id/difference11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="Time Remaining x Time Factor x Bomb Factor x Difficulty Level"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:fontFamily="@font/aclonica"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/difference6" />
+
+    <TextView
+        android:id="@+id/difference6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="Score will be calculated by:"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:fontFamily="@font/aclonica"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/difference7" />
+
+    <TextView
+        android:id="@+id/difference7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="Score Calculation"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:fontFamily="@font/aclonica"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/difference8" />
+
+    <TextView
+        android:id="@+id/difference8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="Click on any one of the grids below to start the game."
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:fontFamily="@font/aclonica"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/difference9" />
+
+    <TextView
+        android:id="@+id/difference9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="Enter the time you wish to give yourself in seconds. time given must be less than 10 minutes."
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:fontFamily="@font/aclonica"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/difference10" />
+
+    <TextView
+        android:id="@+id/difference10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="Enter the number of bombs between 2 and 50."
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:fontFamily="@font/aclonica"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

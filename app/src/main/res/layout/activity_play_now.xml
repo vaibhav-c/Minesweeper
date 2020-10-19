@@ -2,9 +2,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/screen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#246151"
+    android:background="#42D8B1"
     android:onClick="doNothing"
     tools:context=".PlayNow">
 
@@ -16,12 +17,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/grid" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="320dp"
+        android:layout_width="353dp"
         android:layout_height="0dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="@+id/gridImage"
@@ -33,9 +33,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="2dp"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="2dp"
             android:layout_marginRight="2dp"
-            android:layout_marginBottom="1.5dp"
+            android:layout_marginBottom="1dp"
             android:layout_weight="1"
             android:orientation="horizontal">
 
@@ -124,7 +124,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="2dp"
-            android:layout_marginTop="3dp"
+            android:layout_marginTop="2.5dp"
             android:layout_marginRight="2dp"
             android:layout_marginBottom="1.5dp"
             android:layout_weight="1"
@@ -215,9 +215,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="2dp"
-            android:layout_marginTop="3dp"
+            android:layout_marginTop="1.5dp"
             android:layout_marginRight="2dp"
-            android:layout_marginBottom="1.5dp"
+            android:layout_marginBottom="1dp"
             android:layout_weight="1"
             android:orientation="horizontal">
 
@@ -306,9 +306,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="2dp"
-            android:layout_marginTop="3dp"
+            android:layout_marginTop="2dp"
             android:layout_marginRight="2dp"
-            android:layout_marginBottom="1.5dp"
+            android:layout_marginBottom="1dp"
             android:layout_weight="1"
             android:orientation="horizontal">
 
@@ -397,7 +397,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="2dp"
-            android:layout_marginTop="3dp"
+            android:layout_marginTop="2dp"
             android:layout_marginRight="2dp"
             android:layout_marginBottom="2dp"
             android:layout_weight="1"
@@ -488,9 +488,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="2dp"
-            android:layout_marginTop="2.5dp"
+            android:layout_marginTop="1.5dp"
             android:layout_marginRight="2dp"
-            android:layout_marginBottom="2dp"
+            android:layout_marginBottom="1.5dp"
             android:layout_weight="1"
             android:orientation="horizontal">
 
@@ -579,7 +579,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="2dp"
-            android:layout_marginTop="2.25dp"
+            android:layout_marginTop="1.5dp"
             android:layout_marginRight="2dp"
             android:layout_marginBottom="2dp"
             android:layout_weight="1"
@@ -670,7 +670,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="2dp"
-            android:layout_marginTop="2.5dp"
+            android:layout_marginTop="1.5dp"
             android:layout_marginRight="2dp"
             android:layout_marginBottom="2dp"
             android:layout_weight="1"
@@ -761,7 +761,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="2dp"
-            android:layout_marginTop="2.25dp"
+            android:layout_marginTop="0.5dp"
             android:layout_marginRight="2dp"
             android:layout_marginBottom="2dp"
             android:layout_weight="1"
@@ -852,7 +852,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="2dp"
-            android:layout_marginTop="2dp"
+            android:layout_marginTop="0.5dp"
             android:layout_marginRight="2dp"
             android:layout_marginBottom="2dp"
             android:layout_weight="1"
@@ -973,11 +973,14 @@
 
     <TextView
         android:id="@+id/status"
+        style="@style/Widget.AppCompat.TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="doNothing"
-        android:textColor="#14E8E8"
+        android:textColor="#000000"
         android:textSize="28sp"
+        android:textStyle="bold"
+        app:fontFamily="@font/aclonica"
         app:layout_constraintBottom_toTopOf="@+id/gridImage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -991,9 +994,10 @@
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:onClick="doNothing"
-        android:textColor="#14E8E8"
+        android:textColor="#000000"
         android:textSize="20sp"
         android:textStyle="bold"
+        app:fontFamily="@font/aclonica"
         app:layout_constraintBottom_toTopOf="@+id/gridImage"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/status" />
@@ -1005,35 +1009,34 @@
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:onClick="doNothing"
-        android:textColor="#14E8E8"
+        android:textColor="#000000"
         android:textSize="20sp"
         android:textStyle="bold"
+        app:fontFamily="@font/aclonica"
         app:layout_constraintBottom_toTopOf="@+id/gridImage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/status" />
 
-    <Button
+    <ImageView
         android:id="@+id/resetButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#FFFFFF"
+        android:layout_width="50dp"
+        android:layout_height="75dp"
         android:onClick="reset"
-        android:text="Reset"
-        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/unmarkButton"
         app:layout_constraintStart_toEndOf="@+id/markButton"
         app:layout_constraintTop_toBottomOf="@+id/gridImage"
-        app:layout_constraintVertical_bias="0.115" />
+        app:layout_constraintVertical_bias="0.115"
+        app:srcCompat="@drawable/reset" />
 
     <TextView
         android:id="@+id/timer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="doNothing"
-        android:textColor="#FDFAFA"
-        android:textSize="20sp"
-        android:textStyle="bold"
+        android:textColor="#000000"
+        android:textSize="14sp"
+        app:fontFamily="@font/aclonica"
         app:layout_constraintBottom_toTopOf="@+id/gridImage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -1048,5 +1051,18 @@
         app:layout_constraintEnd_toEndOf="@id/linearLayout"
         app:layout_constraintStart_toStartOf="@id/linearLayout"
         app:layout_constraintTop_toTopOf="@id/linearLayout" />
+
+    <TextView
+        android:id="@+id/nextLev"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:alpha="0"
+        android:onClick="next"
+        android:text="Next Level"
+        android:textColor="#000000"
+        android:textSize="30sp"
+        app:fontFamily="@font/aclonica"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

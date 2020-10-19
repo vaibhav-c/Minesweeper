@@ -22,12 +22,45 @@ public class dataBaseHandler extends SQLiteOpenHelper {
         String query = "CREATE TABLE " + params.TABLE_NAME + "("
                 + params.KEY_ID + " INTEGER PRIMARY KEY, " + params.KEY_SCORE +
                 " INTEGER,"  + params.KEY_DATE + " TEXT)";
+        String query1 = "CREATE TABLE " + params.TABLE_NAME_EIGHT + "("
+                + params.KEY_ID_EIGHT + " INTEGER PRIMARY KEY, " + params.KEY_SCORE_EIGHT +
+                " INTEGER,"  + params.KEY_DATE_EIGHT + " TEXT)";
         Log.d("Msg", "Query run is" + query);
+        Log.d("Msg", "Query run is" + query1);
         db.execSQL(query);
+        db.execSQL(query1);
     }
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
 
+    }
+    public void addHighScoreEight(highScore hs) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues value = new ContentValues();
+        value.put(params.KEY_SCORE_EIGHT, hs.getScore());
+        value.put(params.KEY_DATE_EIGHT, hs.getDate());
+        db.insert(params.TABLE_NAME_EIGHT, null, value);
+        Log.d("Msg", "Inserted");
+        db.close();
+    }
+    public List<highScore> showHighScoreEight() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        List<highScore> list = new ArrayList<>();
+        String query = "SELECT * FROM " + params.TABLE_NAME_EIGHT + " ORDER BY " + params.KEY_SCORE_EIGHT + " DESC ";
+        Cursor cursor = db.rawQuery(query, null);
+        Log.d("Msg", query);
+        if(cursor.moveToFirst()) {
+            do{
+                highScore c = new highScore();
+                c.setId(Integer.parseInt(cursor.getString(0)));
+                c.setScore(cursor.getLong(1));
+                c.setDate(cursor.getString(2));
+                Log.d("Msg", "added to list");
+                list.add(c);
+            } while(cursor.moveToNext());
+        }
+        db.close();
+        return list;
     }
     public void addHighScore(highScore hs) {
         SQLiteDatabase db = this.getWritableDatabase();

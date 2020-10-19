@@ -4,17 +4,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ADE1F8"
+    android:background="@drawable/levelback"
     android:onClick="easy"
     tools:context=".chooseLevel">
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="100dp"
+    <ImageView
+        android:id="@+id/ques"
+        android:layout_width="50dp"
         android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:onClick="ques"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ques" />
+
+    <Button
+        android:id="@+id/Easy"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
         android:background="#83EF06"
         android:onClick="easy"
-        android:text="Easy"
+        android:text="8 x 8"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,32 +34,112 @@
         app:layout_constraintVertical_bias="0.415" />
 
     <Button
-        android:id="@+id/button3"
-        android:layout_width="150dp"
-        android:layout_height="67dp"
+        android:id="@+id/Medium"
+        android:layout_width="115dp"
+        android:layout_height="50dp"
         android:background="#F8E756"
         android:onClick="medium"
-        android:text="Medium"
-        android:textSize="24sp"
+        android:text="9 x 9"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.500"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2"
+        app:layout_constraintTop_toBottomOf="@+id/Easy"
         app:layout_constraintVertical_bias="0" />
 
     <Button
-        android:id="@+id/button4"
-        android:layout_width="200dp"
-        android:layout_height="100dp"
+        android:id="@+id/Hard"
+        android:layout_width="150dp"
+        android:layout_height="75dp"
         android:background="#EF4009"
         android:onClick="hard"
-        android:text="Hard"
-        android:textSize="24sp"
+        android:text="10 x 10"
+        android:textSize="36sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.500"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button3"
+        app:layout_constraintTop_toBottomOf="@+id/Medium"
         app:layout_constraintVertical_bias="0" />
+
+    <ImageView
+        android:id="@+id/hand"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/Easy"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hand2"
+        app:srcCompat="@drawable/bat" />
+
+    <ImageView
+        android:id="@+id/hand2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="45dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/bat" />
+
+    <ImageView
+        android:id="@+id/shelf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/Medium"
+        app:srcCompat="@drawable/shelf" />
+
+    <EditText
+        android:id="@+id/enterBombNo"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="140dp"
+        android:background="@null"
+        android:ems="10"
+        android:hint="Enter Number of Bombs"
+        android:inputType="textPersonName"
+        android:paddingLeft="10dp"
+        android:textColor="#000000"
+        android:textColorHint="#000000"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/hand2"
+        app:layout_constraintEnd_toEndOf="@+id/hand2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/hand2" />
+
+    <EditText
+        android:id="@+id/enterTime"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="140dp"
+        android:background="@null"
+        android:ems="10"
+        android:hint="Enter Time in seconds"
+        android:inputType="textPersonName"
+        android:paddingLeft="10dp"
+        android:textColor="#000000"
+        android:textColorHint="#000000"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/hand"
+        app:layout_constraintEnd_toEndOf="@+id/hand"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/hand" />
+
+    <ImageView
+        android:id="@+id/back"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:onClick="onBackPressed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/back" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

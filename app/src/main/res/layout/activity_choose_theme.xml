@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/themeback"
+    tools:context=".chooseTheme">
+
+    <Button
+        android:id="@+id/kolkata"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="40dp"
+        android:background="#9C27B0"
+        android:onClick="setheme"
+        android:tag="kolkata"
+        android:text="Kolkata"
+        android:textColor="#FFC413"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mumbai" />
+
+    <Button
+        android:id="@+id/nothing"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:onClick="setheme"
+        android:tag="No Theme"
+        android:text="No Theme"
+        android:textColor="#000000"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/delhi" />
+
+    <Button
+        android:id="@+id/punjab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="40dp"
+        android:background="#DC180A"
+        android:onClick="setheme"
+        android:tag="punjab"
+        android:text="Punjab"
+        android:textColor="#918F87"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rajasthan" />
+
+    <Button
+        android:id="@+id/mumbai"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="110dp"
+        android:background="#051550"
+        android:onClick="setheme"
+        android:tag="mumbai"
+        android:text="Mumbai"
+        android:textColor="#FFEB3B"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/hyderabad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="80dp"
+        android:layout_marginRight="80dp"
+        android:background="#FF9800"
+        android:onClick="setheme"
+        android:tag="hyderabad"
+        android:text="Hyderabad"
+        android:textColor="#FFFF00"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chennai" />
+
+    <Button
+        android:id="@+id/chennai"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="110dp"
+        android:layout_marginEnd="80dp"
+        android:layout_marginRight="80dp"
+        android:background="#FFEB3B"
+        android:onClick="setheme"
+        android:tag="chennai"
+        android:text="Chennai"
+        android:textColor="#03A9F4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/rajasthan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="40dp"
+        android:background="#E91E63"
+        android:onClick="setheme"
+        android:tag="rajasthan"
+        android:text="Rajasthan"
+        android:textColor="#0C8FF8"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/kolkata" />
+
+    <Button
+        android:id="@+id/bangalore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="80dp"
+        android:layout_marginRight="80dp"
+        android:background="#BD0606"
+        android:onClick="setheme"
+        android:tag="bangalore"
+        android:text="Bangalore"
+        android:textColor="#FFC107"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hyderabad" />
+
+    <Button
+        android:id="@+id/delhi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="80dp"
+        android:layout_marginRight="80dp"
+        android:background="#BD0606"
+        android:onClick="setheme"
+        android:tag="delhi"
+        android:text="Delhi"
+        android:textColor="#03A9F4"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bangalore" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:textAllCaps="true"
+        android:textColor="#FFFFFF"
+        android:textSize="22sp"
+        app:fontFamily="@font/aclonica"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView102"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:onClick="onBackPressed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/back" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

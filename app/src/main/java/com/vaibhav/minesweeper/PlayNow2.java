@@ -1,32 +1,40 @@
 package com.vaibhav.minesweeper;
 
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
+import android.content.Intent;
+import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.vaibhav.minesweeper.Handler.dataBaseHandler;
-import com.vaibhav.minesweeper.Model.highScore;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.vaibhav.minesweeper.HandlerLevels.dataBaseHandlerLevels;
+import com.vaibhav.minesweeper.HandlerMT.DataBaseHandlerMT;
+import com.vaibhav.minesweeper.ModelLevels.level;
+import com.vaibhav.minesweeper.ThemeModel.MusicThemeT;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
 
 public class PlayNow2 extends AppCompatActivity{
-    int c = 0, timeOver = 0, tt = 0, lost = 0, resEt = 0;
+    int c = 0, timeOver = 0, tt = 0, lost = 0, resEt = 0, bombNo = 10, timerValue = 120000, unlockLevel = 0;
     boolean marked = false;
     boolean unmarked = false;
+    int whetherEight = 0;
     MediaPlayer ring;
+    TextView txt;
     char[][] arr = new char[8][8];//display
     int[][] arrData = new int[8][8];//data
-    int[][] unique = new int[10][2];//Change for new number of bombs
-    int[] a = new int[10];//Change for new number of bombs
-    int[] b = new int[10];//Change for new number of bombs
+    int[][] unique = new int[bombNo][2];//Change for new number of bombs
+    int[] a = new int[bombNo];//Change for new number of bombs
+    int[] b = new int[bombNo];//Change for new number of bombs
     MediaPlayer fireworks;
     MediaPlayer ringer;
     MediaPlayer timerGone;
@@ -34,6 +42,8 @@ public class PlayNow2 extends AppCompatActivity{
     int opened = 0;
     CountDownTimer t;
     long tim;
+    ImageView imgGrid;
+    View viewScreen;
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void cell(View view) {
         ImageView img = (ImageView) view;
@@ -44,7 +54,7 @@ public class PlayNow2 extends AppCompatActivity{
         if(c == 1) {
             if(resEt == 0) {
                 final TextView timer = findViewById(R.id.timer);
-                t = new CountDownTimer(120000, 1000) {
+                t = new CountDownTimer(timerValue, 1000) {
                     public void onTick(long millisUntilFinished) {
                         tim = millisUntilFinished/1000;
                         ringer.start();
@@ -77,7 +87,7 @@ public class PlayNow2 extends AppCompatActivity{
             if(arr[i][j] == 'M') {
                 arr[i][j] = 'U';
             }
-            img.setImageResource(R.drawable.white);
+            img.setImageResource(0);
         } else {
             c++;
             if (arr[i][j] == 'N' || arr[i][j] == 'U') {
@@ -99,16 +109,28 @@ public class PlayNow2 extends AppCompatActivity{
         }
         if(lost == 0) {
             TextView status = findViewById(R.id.status);
-            if (opened == 54) {//Change for new number of bombs
+            if (opened == (64 - bombNo)) {//Change for new number of bombs
                 if (timeOver != 0) {
                     timeOver--;
                     status.setText("Win beyond time limit.");
                 } else {
                     status.setText("Win");
-                    dataBaseHandler db = new dataBaseHandler(PlayNow2.this);
-                    Date d = new Date(System.currentTimeMillis());
-                    highScore hs = new highScore(tim * 1, fmt.format(d));
-                    db.addHighScore(hs);
+                    if(unlockLevel <= 12) {
+                        txt.setAlpha(1);
+                    }
+                    if(whetherEight == 0) {
+                        dataBaseHandlerLevels db = new dataBaseHandlerLevels(PlayNow2.this);
+                        if (unlockLevel > db.showLevelNoEight()) {
+                            level lev = new level(unlockLevel);
+                            db.addLevelEight(lev);
+                        }
+                    } else {
+                        dataBaseHandlerLevels db = new dataBaseHandlerLevels(PlayNow2.this);
+                        if (unlockLevel > db.showLevelNo()) {
+                            level lev = new level(unlockLevel);
+                            db.addLevel(lev);
+                        }
+                    }
                 }
                 fireworks = MediaPlayer.create(PlayNow2.this, R.raw.fireworks);
                 ringer.stop();
@@ -129,18 +151,18 @@ public class PlayNow2 extends AppCompatActivity{
                     }
                 }
                 TextView status1 = findViewById(R.id.statusBomb);
-                status1.setText("Bombs: 10");//Change for new number of bombs
+                status1.setText("Bombs: " + bombNo);//Change for new number of bombs
             }
         }
     }
     private void showBomb() {
-        for(int i = 0; i < 10; i++) {//Change for new number of bombs
+        for(int i = 0; i < bombNo; i++) {//Change for new number of bombs
             int k = unique[i][0] * 8 + unique[i][1] + 2;
             String s = String.format("imageView%d",k);
             t.cancel();
             ringer.stop();
             final ImageView img = findViewById(getResources().getIdentifier(s, "id", getPackageName()));
-            if(opened == 54) {//Change for new number of bombs
+            if(opened == (64 - bombNo)) {//Change for new number of bombs
                 img.setImageResource(R.drawable.bomb);
                 t.cancel();
             } else {
@@ -164,16 +186,22 @@ public class PlayNow2 extends AppCompatActivity{
     }
     private void setMines(int l, int m) {
         Random rand = new Random();
-        for(int i = 0; i < 10; i++) {//Change for new number of bombs
+        for(int i = 0; i < bombNo; i++) {//Change for new number of bombs
             unique[i][0]=rand.nextInt(8);//getting random rows and columns through rand.nextInt()
             unique[i][1]=rand.nextInt(8);
             a[i] = unique[i][0];
             b[i] = unique[i][1];
-            if(i != 0)
-                if(not_unique_combo(unique,i) || (unique[i][0] == l && unique[i][1] == m))
+            if(i != 0) {
+                if (not_unique_combo(unique, i) || (unique[i][0] == l && unique[i][1] == m)) {
                     i--;
+                }
+            } else {
+                if(unique[i][0] == l && unique[i][1] == m) {
+                    i--;
+                }
+            }
         }
-        for(int i = 0; i < 10; i++) {//Change for new number of bombs
+        for(int i = 0; i < bombNo; i++) {//Change for new number of bombs
             arrData[unique[i][0]][unique[i][1]] = 111;
         }
         setSurroundings();
@@ -202,52 +230,100 @@ public class PlayNow2 extends AppCompatActivity{
         }
     }
     private void openSurroundings(int i, int j) {
-        arr[i][j] = 'O';
-        opened++;
-        if(i - 1 >= 0 && arrData[i - 1][j] != 111 && arr[i - 1][j] != 'A' && arr[i - 1][j] != 'M') {
-            arr[i - 1][j] = 'O';
+        if(whetherEight == 0) {
+            arr[i][j] = 'O';
             opened++;
-        }
-        if(j - 1 >= 0 && arrData[i][j - 1] != 111 && arr[i][j - 1] != 'A' && arr[i][j - 1] != 'M') {
-            arr[i][j - 1] = 'O';
-            opened++;
-        }
-        if(i + 1 < 8 && arrData[i + 1][j] != 111 && arr[i + 1][j] != 'A' && arr[i + 1][j] != 'M') {
-            arr[i + 1][j] = 'O';
-            opened++;
-        }
-        if(j + 1 < 8 && arrData[i][j + 1] != 111 && arr[i][j + 1] != 'A' && arr[i][j + 1] != 'M') {
-            arr[i][j + 1] = 'O';
-            opened++;
-        }
-        if(i - 1 >= 0 && j - 1 >= 0 && arrData[i - 1][j - 1] != 111 && arr[i - 1][j - 1] != 'A' && arr[i - 1][j - 1] != 'M') {
-            arr[i - 1][j - 1] = 'O';
-            opened++;
-        }
-        if(i - 1 >= 0 && j + 1 < 8 && arrData[i - 1][j + 1] != 111 && arr[i - 1][j + 1] != 'A' && arr[i - 1][j + 1] != 'M') {
-            arr[i - 1][j + 1] = 'O';
-            opened++;
-        }
-        if(j - 1 >= 0 && i + 1 < 8 && arrData[i + 1][j-1] != 111 && arr[i + 1][j - 1] != 'A' && arr[i + 1][j - 1] != 'M') {
-            arr[i + 1][j - 1] = 'O';
-            opened++;
-        }
-        if(i + 1 < 8 && j + 1 < 8 && arrData[i + 1][j + 1] != 111 && arr[i + 1][j + 1] != 'A' && arr[i + 1][j + 1] != 'M') {
-            arr[i + 1][j + 1] = 'O';
-            opened++;
-        }
-        for(int k = 0; k < 8; k++) {
-            for(int l = 0; l < 8; l++) {
-                if(arr[k][l] == 'O') {
-                    show(k,l);
+            if (i - 1 >= 0 && arrData[i - 1][j] != 111 && arr[i - 1][j] != 'A' && arr[i - 1][j] != 'M') {
+                arr[i - 1][j] = 'O';
+                opened++;
+            }
+            if (j - 1 >= 0 && arrData[i][j - 1] != 111 && arr[i][j - 1] != 'A' && arr[i][j - 1] != 'M') {
+                arr[i][j - 1] = 'O';
+                opened++;
+            }
+            if (i + 1 < 8 && arrData[i + 1][j] != 111 && arr[i + 1][j] != 'A' && arr[i + 1][j] != 'M') {
+                arr[i + 1][j] = 'O';
+                opened++;
+            }
+            if (j + 1 < 8 && arrData[i][j + 1] != 111 && arr[i][j + 1] != 'A' && arr[i][j + 1] != 'M') {
+                arr[i][j + 1] = 'O';
+                opened++;
+            }
+            if (i - 1 >= 0 && j - 1 >= 0 && arrData[i - 1][j - 1] != 111 && arr[i - 1][j - 1] != 'A' && arr[i - 1][j - 1] != 'M') {
+                arr[i - 1][j - 1] = 'O';
+                opened++;
+            }
+            if (i - 1 >= 0 && j + 1 < 8 && arrData[i - 1][j + 1] != 111 && arr[i - 1][j + 1] != 'A' && arr[i - 1][j + 1] != 'M') {
+                arr[i - 1][j + 1] = 'O';
+                opened++;
+            }
+            if (j - 1 >= 0 && i + 1 < 8 && arrData[i + 1][j - 1] != 111 && arr[i + 1][j - 1] != 'A' && arr[i + 1][j - 1] != 'M') {
+                arr[i + 1][j - 1] = 'O';
+                opened++;
+            }
+            if (i + 1 < 8 && j + 1 < 8 && arrData[i + 1][j + 1] != 111 && arr[i + 1][j + 1] != 'A' && arr[i + 1][j + 1] != 'M') {
+                arr[i + 1][j + 1] = 'O';
+                opened++;
+            }
+            for (int k = 0; k < 8; k++) {
+                for (int l = 0; l < 8; l++) {
+                    if (arr[k][l] == 'O') {
+                        show(k, l);
+                    }
                 }
             }
+            TextView status = findViewById(R.id.statusOpen);
+            status.setText("Opened: " + opened);
+        } else {
+            arr[i][j] = 'O';
+            opened++;
+            if (arrData[i][j] == 0) {
+                if (i - 1 >= 0 && arrData[i - 1][j] != 111 && arr[i - 1][j] != 'A' && arr[i - 1][j] != 'M' && arr[i - 1][j] != 'O') {
+                    openSurroundings(i - 1, j);
+                    arr[i - 1][j] = 'O';
+                }
+                if (j - 1 >= 0 && arrData[i][j - 1] != 111 && arr[i][j - 1] != 'A' && arr[i][j - 1] != 'M' && arr[i][j - 1] != 'O') {
+                    openSurroundings(i, j - 1);
+                    arr[i][j - 1] = 'O';
+                }
+                if (i + 1 < 8 && arrData[i + 1][j] != 111 && arr[i + 1][j] != 'A' && arr[i + 1][j] != 'M' && arr[i + 1][j] != 'O') {
+                    openSurroundings(i + 1, j);
+                    arr[i + 1][j] = 'O';
+                }
+                if (j + 1 < 8 && arrData[i][j + 1] != 111 && arr[i][j + 1] != 'A' && arr[i][j + 1] != 'M' && arr[i][j + 1] != 'O') {
+                    openSurroundings(i, j + 1);
+                    arr[i][j + 1] = 'O';
+                }
+                if (i - 1 >= 0 && j - 1 >= 0 && arrData[i - 1][j - 1] != 111 && arr[i - 1][j - 1] != 'A' && arr[i - 1][j - 1] != 'M' && arr[i - 1][j - 1] != 'O') {
+                    openSurroundings(i - 1, j - 1);
+                    arr[i - 1][j - 1] = 'O';
+                }
+                if (i - 1 >= 0 && j + 1 < 8 && arrData[i - 1][j + 1] != 111 && arr[i - 1][j + 1] != 'A' && arr[i - 1][j + 1] != 'M' && arr[i - 1][j + 1] != 'O') {
+                    openSurroundings(i - 1, j + 1);
+                    arr[i - 1][j + 1] = 'O';
+                }
+                if (j - 1 >= 0 && i + 1 < 8 && arrData[i + 1][j - 1] != 111 && arr[i + 1][j - 1] != 'A' && arr[i + 1][j - 1] != 'M' && arr[i + 1][j - 1] != 'O') {
+                    openSurroundings(i + 1, j - 1);
+                    arr[i + 1][j - 1] = 'O';
+                }
+                if (i + 1 < 8 && j + 1 < 8 && arrData[i + 1][j + 1] != 111 && arr[i + 1][j + 1] != 'A' && arr[i + 1][j + 1] != 'M' && arr[i + 1][j + 1] != 'O') {
+                    openSurroundings(i + 1, j + 1);
+                    arr[i + 1][j + 1] = 'O';
+                }
+            }
+            for (int k = 0; k < 8; k++) {
+                for (int l = 0; l < 8; l++) {
+                    if (arr[k][l] == 'O') {
+                        show(k, l);
+                    }
+                }
+            }
+            TextView status = findViewById(R.id.statusOpen);
+            status.setText("Opened: " + opened);
         }
-        TextView status = findViewById(R.id.statusOpen);
-        status.setText("Opened: " + opened);
     }
     private void setSurroundings() {
-        for(int i = 0; i < 10; i++) { //updating mine in surroundings
+        for(int i = 0; i < bombNo; i++) { //updating mine in surroundings
             if(a[i] - 1 >= 0) {//Change for new number of bombs
                 if(arrData[a[i] - 1][b[i]] != 111) {
                     arrData[a[i] - 1][b[i]] += 1;
@@ -332,8 +408,13 @@ public class PlayNow2 extends AppCompatActivity{
     }
     public void reset(View view) {
         resEt++;
-        ringer.stop();
-        t.cancel();
+        if(ringer != null) {
+            ringer.stop();
+            ringer.release();
+        }
+        if(t != null) {
+            t.cancel();
+        }
         for(int i = 0; i < 8; i++) {
             for(int j = 0; j < 8; j++) {
                 arr[i][j] = 'N';//N means not opened
@@ -352,18 +433,20 @@ public class PlayNow2 extends AppCompatActivity{
         status1.setText(" ");
         TextView status2 = findViewById(R.id.statusBomb);
         status2.setText(" ");
-        if(opened == 54) {//Change for new number of bombs
+        if(opened == (64 - bombNo)) {//Change for new number of bombs
             fireworks.stop();
+            fireworks.release();
         }
         opened = 0;
         c = 0;
         marked = false;
         unmarked = false;
+        txt.setAlpha(0);
         tt = 0;
         lost = 0;
         final TextView timer = findViewById(R.id.timer);
-        t.cancel();
-        t = new CountDownTimer(120000, 1000) {
+        //t.cancel();
+        t = new CountDownTimer(timerValue, 1000) {
             public void onTick(long millisUntilFinished) {
                 tim = millisUntilFinished/1000;
                 timer.setText(millisUntilFinished / 1000 + "s");
@@ -387,11 +470,111 @@ public class PlayNow2 extends AppCompatActivity{
     public void doNothing(View view) {
 
     }
+    public void onBackPressed() {
+        if(whetherEight == 0) {
+            Intent intent = new Intent(this, LevelPlayChooseEight.class);
+            intent.putExtra("isEight", whetherEight);
+            startActivity(intent);
+            finish();
+        } else {
+            Intent intent = new Intent(this, LevelPlayChoose.class);
+            intent.putExtra("isEight", whetherEight);
+            startActivity(intent);
+            finish();
+        }
+        if(ringer != null) {
+            ringer.stop();
+        }
+        if(fireworks != null) {
+            fireworks.stop();
+        }
+        if(timerGone != null) {
+            timerGone.stop();
+        }
+        if(t != null) {
+            t.cancel();
+        }
+        if(ring != null) {
+            ring.stop();
+        }
+        PerfectLoopMediaPlayer.create(PlayNow2.this, R.raw.bg);
+    }
+    public void next(View view) {
+        if(txt.getAlpha() == 1 && unlockLevel <= 12) {
+            onBackPressed();
+        }
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play_now2);
+        PerfectLoopMediaPlayer.release();
+        Intent intent = getIntent();
+        bombNo = intent.getIntExtra("bombNo", 10);
+        timerValue = intent.getIntExtra("timeGiven", 120000);
+        unlockLevel = intent.getIntExtra("unlock", 12);
+        whetherEight = intent.getIntExtra("isEight", 0);
         ringer = MediaPlayer.create(PlayNow2.this,R.raw.ringer);
+        viewScreen = findViewById(R.id.screen);
+        txt = findViewById(R.id.nextLev);
+
+        /*chooseTheme ct = new chooseTheme();
+        if(ct.rovideTheme() != null) {
+            city = ct.provideTheme();
+        } else {
+            city = "";
+        }*/
+        DataBaseHandlerMT dataBaseHandlerMT = new DataBaseHandlerMT(PlayNow2.this);
+        int n;
+        try {
+            n = dataBaseHandlerMT.showTheme();
+            Log.d("Msg", "ntry="+n);
+        } catch(Exception e) {
+            n = 9;
+            try {
+                dataBaseHandlerMT.addTheme(new MusicThemeT(9));
+            } catch(Exception ed) {
+
+            }
+        }
+        imgGrid = findViewById(R.id.gridImage);
+        if(n == 1) {
+            imgGrid.setImageResource(R.drawable.mumbai2);
+            viewScreen.setBackgroundResource(R.drawable.blu);
+            //viewScreen.setBackgroundColor(Color.parseColor("#0080FF"));
+        } else if (n == 2) {
+            imgGrid.setImageResource(R.drawable.chennai2);
+            viewScreen.setBackgroundResource(R.drawable.darkblue);
+            //viewScreen.setBackgroundColor(Color.parseColor("#99D6FF"));
+        } else if (n == 6) {
+            imgGrid.setImageResource(R.drawable.bangalore2);
+            viewScreen.setBackgroundResource(R.drawable.golden);
+            //viewScreen.setBackgroundColor(Color.parseColor("#FFE066"));
+        } else if (n == 5) {
+            imgGrid.setImageResource(R.drawable.rajasthan2);
+            viewScreen.setBackgroundResource(R.drawable.pink);
+            //viewScreen.setBackgroundColor(Color.parseColor("#FFB3D1"));
+        } else if (n == 4) {
+            imgGrid.setImageResource(R.drawable.hyderabad2);
+            viewScreen.setBackgroundResource(R.drawable.orange);
+            //viewScreen.setBackgroundColor(Color.parseColor("#FFB380"));
+        } else if (n == 8) {
+            imgGrid.setImageResource(R.drawable.delhi2);
+            viewScreen.setBackgroundResource(R.drawable.blue);
+            //viewScreen.setBackgroundColor(Color.parseColor("#66A3FF"));
+        } else if (n == 7) {
+            imgGrid.setImageResource(R.drawable.punjab2);
+            viewScreen.setBackgroundResource(R.drawable.red);
+            //viewScreen.setBackgroundColor(Color.parseColor("#FF6666"));
+        } else if (n == 3) {
+            imgGrid.setImageResource(R.drawable.kolkata2);
+            viewScreen.setBackgroundResource(R.drawable.purple);
+            //viewScreen.setBackgroundColor(Color.parseColor("#DD80FF"));
+        } else {
+            imgGrid.setImageResource(R.drawable.grid2);
+            viewScreen.setBackgroundResource(R.drawable.themeback);
+            //viewScreen.setBackgroundColor(Color.parseColor("#00CC99"));
+        }
         for(int i = 0; i < 8; i++) {
             for(int j = 0; j < 8; j++) {
                 arr[i][j] = 'N';//N means not opened

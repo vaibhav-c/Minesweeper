@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Minesweeper</string>
+    <string name="howToPlay">How to Play?</string>
+    <string name="playNow">Play Now</string>
+    <string name="easy">Easy</string>
+    <string name="medium">Medium</string>
+    <string name="hard">Hard</string>
+    <string name="grid">grid</string>
 </resources>

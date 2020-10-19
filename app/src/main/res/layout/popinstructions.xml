@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    android:background="@drawable/paper">
+
+    <TextView
+        android:id="@+id/difference6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="15dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="Custom allows you to practice and refine your game. You set the number of bombs, board size and time for yourself. Score will be calculated based on the time left, the time and bombs you provided yourself."
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:fontFamily="@font/aclonica"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/difference7" />
+
+    <TextView
+        android:id="@+id/difference7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="Custom"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:fontFamily="@font/aclonica"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/difference8" />
+
+    <TextView
+        android:id="@+id/difference8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="Unlock a level by solving the previous ones."
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:fontFamily="@font/aclonica"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/difference9" />
+
+    <TextView
+        android:id="@+id/difference9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="There are 12 levels to solve each in Minesweeper and RevNex where time, grid size and bombs change with level thus increasing the difficulty. with progress."
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:fontFamily="@font/aclonica"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/difference10" />
+
+    <TextView
+        android:id="@+id/difference10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="Levels"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:fontFamily="@font/aclonica"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
